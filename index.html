@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>T05 - Multi-chart Dashboard</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #f4f7f6;
+      margin: 0;
+      padding: 2rem;
+      color: #333;
+    }
+    .dashboard-header {
+      background: #4CAF50;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .chart-container {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    svg { display: block; width: 100%; height: auto; }
+  </style>
+</head>
+<body>
+
+  <div class="dashboard-header">
+    <h1>D3 Charts Dashboard</h1>
+    <p>TV power consumption data</p>
+  </div>
+
+  <div class="chart-container">
+    <h2>Energy Consumption vs Star Rating</h2>
+    <div id="scatter-chart"></div>
+  </div>
+
+  <div class="chart-container">
+    <h2>Energy Consumption by Screen Tech</h2>
+    <div id="donut-chart"></div>
+  </div>
+
+  <div class="chart-container">
+    <h2>Energy by Screen Tech (55-inch TVs)</h2>
+    <div id="bar-chart"></div>
+  </div>
+
+  <div class="chart-container">
+    <h2>Spot Power Prices (1998-2024)</h2>
+    <div id="line-chart"></div>
+  </div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="scatter.js"></script>
+  <script src="donut.js"></script>
+  <script src="bar.js"></script>
+  <script src="line.js"></script>
+
+</body>
+</html>
