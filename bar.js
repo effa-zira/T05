@@ -1,7 +1,14 @@
-d3.csv("data/Ex5_TV_energy_55inchTV_byScreenType.csv").then(rawData => {
-  const data = rawData.map(d => {
+d3.csv("data/Ex5_TV_energy_55inchtv_byScreenType.csv").then(rawData => {
+  console.log("Data loaded:", rawData); // This will prove it loaded
+
+  const validRows = rawData.filter(d => d["Screen_Tech"] && d["Screen_Tech"].trim() !== "");
+
+  const data = validRows.map(d => {
     const energyKey = Object.keys(d).find(key => key.includes("Mean"));
-    return { tech: d["Screen_Tech"], energy: +d[energyKey] };
+    return { 
+      tech: d["Screen_Tech"].trim(), 
+      energy: +d[energyKey] 
+    };
   }).filter(d => d.tech && !isNaN(d.energy));
 
   const margin = {top: 30, right: 30, bottom: 50, left: 70};
@@ -19,7 +26,6 @@ d3.csv("data/Ex5_TV_energy_55inchTV_byScreenType.csv").then(rawData => {
     .domain(data.map(d => d.tech))
     .padding(0.2);
 
-  // FIXED: Dynamically scales Y-axis to the highest bar value + padding
   const y = d3.scaleLinear()
     .domain([0, d3.max(data, d => d.energy) + 50]) 
     .range([height, 0]);
